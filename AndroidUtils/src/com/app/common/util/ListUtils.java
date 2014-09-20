@@ -2,6 +2,7 @@ package com.app.common.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * List Utils
@@ -257,5 +258,23 @@ public class ListUtils {
             invertList.add(sourceList.get(i));
         }
         return invertList;
+    }
+    
+    /**
+     * ´òÂÒArrayList
+     * 
+     * */
+    public static <V> List<V> randomList(List<V> sourceList){
+    	if (isEmpty(sourceList)) {
+            return sourceList;
+        }
+    	
+    	List<V> randomList = new ArrayList<V>( sourceList.size( ) );
+    	do{
+    		int randomIndex = Math.abs( new Random( ).nextInt( sourceList.size() ) );
+        	randomList.add( sourceList.remove( randomIndex ) );
+    	}while( sourceList.size( ) > 0 );
+    	
+    	return randomList;
     }
 }
